@@ -18,14 +18,13 @@ Include the gem in your project's gemfile, directing its path to your cloned cop
 
 This gem includes Titan 0.4.2 and its dependencies.
 
-It seems embedded backends (embedded Cassandra, embedded ElasticSearch) do not launch without extra work specifying their class paths when launching your app. The stock gem can run a Cassandra graph via the Thrift connector but will balk at not being able to load log4j.
+It seems embedded backends (embedded Cassandra, embedded ElasticSearch) do not launch without extra work specifying their class paths when launching your app.
 
 The excellent [jBundler](https://github.com/mkristian/jbundler) does a great job of this for you, simply add any of the following to your Jarfile as needed:
 
 ```ruby
-jar 'org.slf4j:slf4j-log4j12', '~> 1.7.5' # Logging output
 jar 'com.thinkaurelius.titan:titan-es', '~> 0.4.2' # ElasticSearch
-jar 'com.thinkaurelius.titan:titan-cassandra', '~> 0.4.2' # Embedded Cassandra
+jar 'com.thinkaurelius.titan:titan-cassandra', '~> 0.4.2' # Cassandra
 jar 'com.thinkaurelius.titan:titan-berkeleyje', '~> 0.4.2' # BerkeleyDB
 ```
 
