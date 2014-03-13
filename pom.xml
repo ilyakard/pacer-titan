@@ -40,15 +40,10 @@
             <artifactId>pipes</artifactId>
             <version>${pipes.version}</version>
         </dependency>
-        <!-- TITAN CASSANDRA SUPPORT -->
+        <!-- TITAN SUPPORT -->
         <dependency>
             <groupId>com.thinkaurelius.titan</groupId>
             <artifactId>titan-core</artifactId>
-            <version>${titan.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.thinkaurelius.titan</groupId>
-            <artifactId>titan-cassandra</artifactId>
             <version>${titan.version}</version>
         </dependency>
     </dependencies>
