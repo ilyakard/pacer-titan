@@ -22,10 +22,12 @@ It seems embedded backends (embedded Cassandra, embedded ElasticSearch) do not l
 
 The excellent [jBundler](https://github.com/mkristian/jbundler) does a great job of this for you, simply add any of the following to your Jarfile as needed:
 
+```ruby
 jar 'org.slf4j:slf4j-log4j12', '~> 1.7.5' # Logging output
 jar 'com.thinkaurelius.titan:titan-es', '~> 0.4.2' # ElasticSearch
 jar 'com.thinkaurelius.titan:titan-cassandra', '~> 0.4.2' # Embedded Cassandra
 jar 'com.thinkaurelius.titan:titan-berkeleyje', '~> 0.4.2' # BerkeleyDB
+```
 
 You may find your JRuby JVM crashes under heavy load if you include too many jars; increase your -XX:MaxPermSize
 
@@ -33,19 +35,25 @@ You may find your JRuby JVM crashes under heavy load if you include too many jar
 
 Opening a Titan graph in Pacer:
 
-  require 'pacer'
-  require 'pacer-titan'
+```ruby
+require 'pacer'
+require 'pacer-titan'
 
-  g = Pacer.titan 'path/to/titan_config.properties'
+g = Pacer.titan 'path/to/titan_config.properties'
+```
 
 The graph settings are specified in an Apache Configuration .properties file.
 
 ## Titan-specific routes
 
 You can use Titan's query() method in pacer routes.
-  g.query{ has('text', Java::ComThinkaureliusTitanCore::Text::CONTAINS, 'lorem') }.out(:author)
+```ruby
+g.query{ has('text', Java::ComThinkaureliusTitanCoreAttribute::Text::CONTAINS, 'lorem') }.out(:author)
+```
 
 You can also use Titan's indexQuery() method to send queries in Lucene syntax to external indices like Elastic:
-  g.index_query(:text, '(lorem ipsum*)', index_name: 'search').out(:author)
+```ruby 
+g.index_query(:text, '(lorem ipsum*)', index_name: 'search').out(:author)
+```
   
 The index_query route can take an array of indices as the first parameter, you can also pass an options hash as the third parameter to specify the index name if it is something other than 'search' as used in most of the Titan configuration examples.
