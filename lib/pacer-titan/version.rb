@@ -1,6 +1,6 @@
 module Pacer
   module Titan
-    VERSION = "0.0.1"
+    VERSION = "0.0.3"
     JAR = "pacer-titan-#{ VERSION }-standalone.jar"
     JAR_PATH = "lib/#{ JAR }"
     BLUEPRINTS_VERSION = "2.4.0"

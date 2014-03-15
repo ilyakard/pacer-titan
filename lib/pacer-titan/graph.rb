@@ -27,7 +27,7 @@ module Pacer
       end
             
       def indexed_properties(type, filters)
-        filters.properties.select { |k, v| key_indices(type).include?(k) and not v.nil? }
+        filters.properties.select { |k, v| key_indices(type).include?(k) }
       end
       
     end
