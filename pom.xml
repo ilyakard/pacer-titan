@@ -7,10 +7,10 @@
     <artifactId>pacer-titan</artifactId>
     <!-- NOTE: the following properties are automatically updated based on the values in lib/pacer-titan/version.rb -->
     <properties>
-      <gem.version>0.0.3</gem.version>
-      <blueprints.version>2.4.0</blueprints.version>
-      <pipes.version>2.4.0</pipes.version>
-      <titan.version>0.4.2</titan.version>
+      <gem.version>0.0.4</gem.version>
+      <blueprints.version>2.5.0</blueprints.version>
+      <pipes.version>2.5.0</pipes.version>
+      <titan.version>0.5.0-M3</titan.version>
     </properties>
     <!-- NOTE: the following properties are automatically updated based on the values in lib/pacer-titan/version.rb -->
     <version>${gem.version}</version>
