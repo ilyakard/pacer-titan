@@ -1,0 +1,1 @@
+jar 'com.thinkaurelius.titan:titan-core:0.5.1'

@@ -1,6 +1,12 @@
 module Pacer
   module Titan
     class Graph < PacerGraph
+    
+      # Include label in key indices so we can limit index queries by label
+      def key_indices(type = nil)
+        indices = super
+        indices.add 'label'
+      end
       
       # Use GraphQuery for index lookups, based on pacer-neo4j's code:
       private
@@ -29,7 +35,6 @@ module Pacer
       def indexed_properties(type, filters)
         filters.properties.select { |k, v| key_indices(type).include?(k) }
       end
-      
     end
   end
 end

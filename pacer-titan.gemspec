@@ -9,13 +9,15 @@ Gem::Specification.new do |s|
   s.authors     = ["Ilya Kardailsky"]
   s.email       = ["ilya.kardailsky@gmail.com"]
   s.homepage    = "http://www.github.com"
-  s.summary     = %q{Titan jars and related code for Pacer}
+  s.summary     = %q{Titan adapter for Pacer}
   s.description = s.summary
 
   s.add_dependency 'pacer', Pacer::Titan::PACER_REQ
+  s.add_dependency 'lock_jar', '~> 0.10.0'
 
-  s.files         = `git ls-files`.split("\n") + [Pacer::Titan::JAR_PATH]
+  s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
+  s.extensions    = ["Rakefile"]
 end

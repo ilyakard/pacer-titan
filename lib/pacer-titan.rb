@@ -4,10 +4,17 @@ lib_path = File.expand_path(File.join(File.dirname(__FILE__), '../lib'))
 $:.unshift lib_path unless $:.any? { |path| path == lib_path }
 
 require 'pacer-titan/version'
-require Pacer::Titan::JAR
+
+require 'lock_jar'
+#LockJar.lock(File.join(File.dirname(__FILE__), "..", "Jarfile"))
+LockJar.load
+
 require 'pacer-titan/graph'
 require 'pacer-titan/titan_query'
 require 'pacer-titan/external_index_query'
+require 'pacer-titan/create_vertex'
+require 'pacer-titan/encoder'
+require 'pacer-titan/vertex_query'
 
 module Pacer
   class << self
@@ -27,7 +34,7 @@ module Pacer
         Pacer.open_graphs.delete path
       end
 
-      Titan::Graph.new(Pacer::YamlEncoder, open, shutdown)
+      Titan::Graph.new(Pacer::TitanEncoder, open, shutdown)
     end
     
     def executing_route(route)

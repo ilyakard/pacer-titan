@@ -4,11 +4,11 @@ module Pacer
       # Use Titan's indexQuery to access external indexes using a custom lucene string
       # eg. for grouped words search starting with lorem: g.index_query(:text, '(lorem*)')
       # can also pass an array of properties to hit multiple elasticsearch indices at once
-      def index_query(properties, query, options = {})
+      def index_query(index_name, properties, query, options = {})
         options[:element_type] ||= :vertex
-        options[:index_name] ||= 'search' # name of the external index as configured in the .properties file
         
         chain_route options.merge(
+          index_name: index_name,
           query: query,
           properties: properties,
           filter: :external_index_query,

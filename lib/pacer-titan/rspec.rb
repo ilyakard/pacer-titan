@@ -18,7 +18,7 @@ class RSpec::GraphRunner
 
     def titan_graph_2
       return @titan_graph_2 if @titan_graph_2
-      @dex_graph2 = Pacer.titan('../pacer-titan/config/inmemory.properties')
+      @titan_graph_2 = Pacer.titan('../pacer-titan/config/inmemory.properties')
     end
   end
 end

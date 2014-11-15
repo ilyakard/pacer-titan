@@ -73,7 +73,7 @@ module Pacer
       end
       
       def inspect_string
-        "#{ inspect_class_name }"
+        "#{ inspect_class_name } (#{query.inspect})"
       end
     end
   end

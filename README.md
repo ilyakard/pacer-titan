@@ -8,29 +8,19 @@ This is an alpha-version pacer adapter with basic support for a [Titan](http://t
 
 ## Installation
 
-As always: ```gem 'pacer-titan'```, then you will need to load the jars for your storage backend of choice (see below).
-
-If you want to hack at pacer-titan:
-- You will need to install Maven first. 
-- Clone this repository.
-- Run ```rake install``` in its directory to build Titan's jars.
-- Include the gem in your project's gemfile, directing its path to your cloned copy.
+As always: ```gem 'pacer-titan'```, then you will need to load the dependencies for your storage backend of choice (see below).
 
 ## Backends
 
-This gem includes Titan 0.4.2 and its dependencies.
+This gem includes Titan 0.5.1 core and its dependencies. You will also need to include the dependencies for your chosen Titan storage backend.
 
-It seems embedded backends (embedded Cassandra, embedded ElasticSearch) do not launch without extra work specifying their class paths when launching your app.
-
-The excellent [jBundler](https://github.com/mkristian/jbundler) does a great job of this for you, simply add any of the following to your Jarfile as needed:
+The excellent [lock_jar](https://github.com/mguymon/lock_jar) does a great job of this for you, simply add any of the following to your Jarfile as needed:
 
 ```ruby
-jar 'com.thinkaurelius.titan:titan-es', '~> 0.4.2' # ElasticSearch
-jar 'com.thinkaurelius.titan:titan-cassandra', '~> 0.4.2' # Cassandra
-jar 'com.thinkaurelius.titan:titan-berkeleyje', '~> 0.4.2' # BerkeleyDB
+jar 'com.thinkaurelius.titan:titan-es:0.5.1' # ElasticSearch
+jar 'com.thinkaurelius.titan:titan-cassandra:0.5.1' # Cassandra
+jar 'com.thinkaurelius.titan:titan-berkeleyje:0.5.1' # BerkeleyDB
 ```
-
-You may find your JRuby JVM crashes under heavy load if you include too many jars; increase your -XX:MaxPermSize
 
 ## Usage
 
