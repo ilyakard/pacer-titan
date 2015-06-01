@@ -3,7 +3,7 @@ module Pacer
     class Graph
       # Use Titan's QueryBuilder to access indices when you need to specify other comparison predicates
       # eg: g.query{ has('description', Text::CONTAINS, 'abc').has('login', 'ilya') }.out(:messages)...
-      # be sure to import com.thinkaurelius.titan.core.attribute.Text for the above example
+      # import com.thinkaurelius.titan.core.attribute.Text for the above example
       def query(options = {}, &query)
         options[:element_type] ||= :vertex
         

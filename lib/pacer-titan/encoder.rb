@@ -14,6 +14,8 @@ module Pacer
         value = value.strip
         value = nil if value == ''
         value
+      when Symbol
+        value.to_s
       when Numeric
         if value.is_a? Bignum
           dump value
@@ -22,8 +24,10 @@ module Pacer
         end
       when true, false
         value.to_java
-      when DateTime, Time, Date
-        value.in_time_zone.utc.strftime ' time %Y-%m-%d %H:%M:%S.%L %z'
+      when Date
+        value.to_time.strftime ' time %Y-%m-%d'
+      when DateTime, Time
+        value.to_time.utc.strftime ' time %Y-%m-%d %H:%M:%S.%L %z'
       when Array
         if value.length == 0
           value_type = Fixnum
@@ -46,6 +50,8 @@ module Pacer
           value.to_java :boolean
         when String
           value.to_java :string
+        when Symbol
+          value.to_java :string
         else
           dump value
         end
@@ -57,8 +63,12 @@ module Pacer
     def self.decode_property(value)
       if value.is_a? String and value[0, 1] == ' '
         if value[1, 4] == 'time'
-          # FIXME: we lose the milliseconds here...
-          Time.zone.parse value[6..-1]
+          # FIXME: we lose the milliseconds here (and time zone if no Rails)...
+          if defined? Rails
+            Time.zone.parse value[6..-1]
+          else
+            Time.parse value[6..-1]
+          end
         else
           YAML.load(value[1..-1])
         end

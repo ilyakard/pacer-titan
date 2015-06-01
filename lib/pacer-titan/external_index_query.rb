@@ -40,7 +40,7 @@ module Pacer
         path = path.vertices.collect{ |v| v.get_element }
       end
       
-      # expects query in the form of 'v.text:(lorem*)'
+      # expects query in the form of 'v.text:(lorem*)' to search 'text' vertex property with lucene query syntax '(lorem*)'
       def build_titan_lucene_query(term, property)
         if property.is_a? Array
           queries = []

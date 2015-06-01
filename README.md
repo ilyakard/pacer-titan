@@ -8,19 +8,11 @@ This is an alpha-version pacer adapter with basic support for a [Titan](http://t
 
 ## Installation
 
-As always: ```gem 'pacer-titan'```, then you will need to load the dependencies for your storage backend of choice (see below).
+As always: ```gem 'pacer-titan'```.
 
 ## Backends
 
-This gem includes Titan 0.5.1 core and its dependencies. You will also need to include the dependencies for your chosen Titan storage backend.
-
-The excellent [lock_jar](https://github.com/mguymon/lock_jar) does a great job of this for you, simply add any of the following to your Jarfile as needed:
-
-```ruby
-jar 'com.thinkaurelius.titan:titan-es:0.5.1' # ElasticSearch
-jar 'com.thinkaurelius.titan:titan-cassandra:0.5.1' # Cassandra
-jar 'com.thinkaurelius.titan:titan-berkeleyje:0.5.1' # BerkeleyDB
-```
+This gem includes Titan 0.5.4 with the Cassandra backend and ElasticSearch.
 
 ## Usage
 

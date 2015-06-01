@@ -2,7 +2,7 @@ module Pacer
   module Titan
     class Graph < PacerGraph
     
-      # Include label in key indices so we can limit index queries by label
+      # Include label in key indices so we can limit index queries by vertex label
       def key_indices(type = nil)
         indices = super
         indices.add 'label'
