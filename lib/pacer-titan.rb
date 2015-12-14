@@ -11,10 +11,11 @@ require 'pacer-titan/external_index_query'
 require 'pacer-titan/create_vertex'
 require 'pacer-titan/encoder'
 require 'pacer-titan/vertex_query'
+require 'pacer-titan/pacer_patch'
 
 module Pacer
   class << self
-    def titan(path="config/inmemory.properties")      
+    def titan(path="config/inmemory.properties")
       open = proc do
         graph = Pacer.open_graphs[path]
         unless graph
@@ -24,7 +25,7 @@ module Pacer
         end
         graph
       end
-      
+
       shutdown = proc do |graph|
         graph.blueprints_graph.shutdown
         Pacer.open_graphs.delete path
